@@ -12,7 +12,11 @@ Nesse primeiro desafio vamos criar algumas funcionalidades básicas que aprendem
 
 #### **Pré-requisitos**
 
+<<<<<<< HEAD
 O que você precisa ter instalado em sua máquina:
+=======
+O que você precisa ter instalado em sua máquina: 
+>>>>>>> 31bd4a6230e33d912840c7a4cc0aec3efbe3de01
 
 - Docker
 - Node.js
