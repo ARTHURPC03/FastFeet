@@ -16,6 +16,8 @@ class Recipients extends Model {
         sequelize,
       }
     )
+
+    return this
   }
 }
 
