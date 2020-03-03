@@ -22,7 +22,7 @@ Toda vez que uma encomenda é cadastrado para um entregador, o mesmo recebe um a
 - **Cadastrar problemas nas entregas:** o entregador pode cadastrar problemas que ocorreram durante a entrega. Assim os problemas ficam registrados e o administrador pode decidir se a entrega deve ser cancelada ou não.
 
 ### :bookmark_tabs: **Rotas**
-As rotas estão disponiveis pra consulta no arquivo <a href="https://github.com/GustavoBlaze/fastfeet/blob/master/Insomnia.json" target="_blank" alt="Rotas">Insomnia.json</a>
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=FastFeet&uri=https%3A%2F%2Fraw.githubusercontent.com%2FARTHURPC03%2FFastFeet%2Fmaster%2FInsomnia.json)
 
 ### :hammer: **Ferramentas utilizadas**
 - <a target="_blank" href="https://www.npmjs.com/package/express" alt="Express">Express</a>
