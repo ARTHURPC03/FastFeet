@@ -1,6 +1,6 @@
-import * as Yup from 'yup'
-import Deliveryman from '../models/Deliveryman'
-import File from '../models/File'
+import * as Yup from 'yup';
+import Deliveryman from '../models/Deliveryman';
+import File from '../models/File';
 
 class DeliverymanController {
   async index(req, res) {
@@ -10,12 +10,12 @@ class DeliverymanController {
         {
           model: File,
           as: 'avatar',
-          attributes: ['id', 'path'],
+          attributes: ['id', 'path', 'url'],
         },
       ],
-    })
+    });
 
-    return res.json(deliverymen)
+    return res.json(deliverymen);
   }
 
   async store(req, res) {
@@ -24,25 +24,25 @@ class DeliverymanController {
       email: Yup.string()
         .email()
         .required(),
-    })
+    });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation Fails' })
+      return res.status(400).json({ error: 'Validation Fails' });
     }
 
     const DeliverymanExists = await Deliveryman.findOne({
       where: { email: req.body.email },
-    })
+    });
 
     if (DeliverymanExists) {
       return res
         .status(400)
-        .json({ error: 'A deliveryman with this email already exists' })
+        .json({ error: 'A deliveryman with this email already exists' });
     }
 
-    const { id, name, email } = await Deliveryman.create(req.body)
+    const { id, name, email } = await Deliveryman.create(req.body);
 
-    return res.json({ id, name, email })
+    return res.json({ id, name, email });
   }
 
   async update(req, res) {
@@ -50,34 +50,34 @@ class DeliverymanController {
       name: Yup.string(),
       email: Yup.string().email(),
       avatar_id: Yup.number(),
-    })
+    });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation Fails' })
+      return res.status(400).json({ error: 'Validation Fails' });
     }
 
-    const deliveryman = await Deliveryman.findByPk(req.params.id)
+    const deliveryman = await Deliveryman.findByPk(req.params.id);
 
     if (!deliveryman) {
-      return res.status(400).json({ error: 'Deliveryman not exists' })
+      return res.status(400).json({ error: 'Deliveryman not exists' });
     }
 
-    const { id, name, email } = await deliveryman.update(req.body)
+    const { id, name, email } = await deliveryman.update(req.body);
 
-    return res.json({ id, name, email })
+    return res.json({ id, name, email });
   }
 
   async delete(req, res) {
-    const deliveryman = await Deliveryman.findByPk(req.params.id)
+    const deliveryman = await Deliveryman.findByPk(req.params.id);
 
     if (!deliveryman) {
-      return res.status(400).json({ error: 'Deliveryman not exists' })
+      return res.status(400).json({ error: 'Deliveryman not exists' });
     }
 
-    await deliveryman.destroy()
+    await deliveryman.destroy();
 
-    return res.json({ deleted: true })
+    return res.status(200).json({});
   }
 }
 
-export default new DeliverymanController()
+export default new DeliverymanController();

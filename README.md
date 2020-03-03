@@ -1,90 +1,50 @@
 <h1 align="center">
-  <img alt="Fastfeet" title="Fastfeet" src=".github/logo.png" width="300px" />
+  <img alt="Fastfeet" title="Fastfeet" src="https://raw.githubusercontent.com/GustavoBlaze/fastfeet/master/imgs/logo.png" width="300px" />
 </h1>
 
+### :memo: Sobre a aplicação
 
-## :rocket: Sobre o desafio
+Esta é uma API REST construída para uma transportadora fictícia, A FastFeet. Toda a API é escrita em NodeJs usando MVC, banco de dados PostgreSQL e integrado com o Sentry para monitoramento de erros em produção. Continue lendo para saber mais sobre as ferramentas utilizadas, funcionalidades e etc.
 
-A aplicação que iremos dar início ao desenvolvimento a partir de agora é um app para uma transportadora fictícia, o FastFeet.
+### :bookmark_tabs: **Funcionalidades de administrador**
 
-Nesse primeiro desafio vamos criar algumas funcionalidades básicas que aprendemos ao longo das aulas até aqui. Esse projeto será desenvolvido aos poucos até o fim da sua jornada onde você terá uma aplicação completa envolvendo back-end, front-end e mobile, que será utilizada para a **certificação do bootcamp**, então, bora pro código!
+- **Autenticação:** se autenticar no sistema para exercer restritas a usuarios autenticados.
+- **Gestão de destinatários:** cadastrar, atualizar e listar destinatários cadastrados.
+- **Gestão de entregadores:** cadastrar, atualizar e listar entregadores cadastrados.
+- **Gestão de encomendas:** cadastrar, atualizar, listar e cancelar encomendas cadastradas.
 
-#### **Pré-requisitos**
+Toda vez que uma encomenda é cadastrado para um entregador, o mesmo recebe um alerta no seu email com as informações, assim como acontece no cancelamento de uma entrega.
 
+### :bookmark_tabs: **Funcionalidades do entregador**
 
-O que você precisa ter instalado em sua máquina:
+- **Visualizar encomendas:** informando o seu ID de cadastro, o entregador consegue visualizar todas suas encomendas.
+- **Alterar status de encomendas:** o entregador pode definir uma data de retirada e de entrega para a encomenda, durante o periodo de 8:00 às 18:00 horas.
+- **Cadastrar problemas nas entregas:** o entregador pode cadastrar problemas que ocorreram durante a entrega. Assim os problemas ficam registrados e o administrador pode decidir se a entrega deve ser cancelada ou não.
 
-- Docker
-- Node.js
-- Yarn (Opcional)
+### :bookmark_tabs: **Rotas**
+As rotas estão disponiveis pra consulta no arquivo <a href="https://github.com/GustavoBlaze/fastfeet/blob/master/Insomnia.json" target="_blank" alt="Rotas">Insomnia.json</a>
 
+### :hammer: **Ferramentas utilizadas**
+- <a target="_blank" href="https://www.npmjs.com/package/express" alt="Express">Express</a>
+- <a target="_blank" href="https://www.npmjs.com/package/sucrase" alt="Sucrase">Sucrase</a>
+- <a target="_blank" href="https://www.npmjs.com/package/nodemon" alt="Nodemon">Nodemon</a>
+- <a target="_blank" href="https://www.npmjs.com/package/eslint" alt="ESLint">ESLint</a>
+- <a target="_blank" href="https://www.npmjs.com/package/prettier" alt="Prettier">Prettier</a>
+- <a target="_blank" href="https://editorconfig.org/" alt="EditorConfig">EditorConfig</a>
+- <a target="_blank" href="https://www.npmjs.com/package/sequelize" alt="Sequelize">Sequelize</a>
+- <a target="_blank" href="https://sentry.io/" alt="Sentry">Sentry</a>
+- <a target="_blank" href="https://www.npmjs.com/package/bcryptjs" alt="bcryptjs">BCryptjs</a>
+- <a target="_blank" href="https://www.npmjs.com/package/bee-queue" alt="bee-queue">Bee Queue</a>
+- <a target="_blank" href="https://www.npmjs.com/package/date-fns" alt="date-fns">Date FNS</a>
+- <a target="_blank" href="https://www.npmjs.com/package/dotenv" alt="dotenv">Dotenv</a>
+- <a target="_blank" href="https://www.npmjs.com/package/express-async-errors" alt="express-async-errors">Express Async Errors</a>
+- <a target="_blank" href="https://www.npmjs.com/package/express-handlebars" alt="express-handlebars">Express Handlebars</a>
+- <a target="_blank" href="https://www.npmjs.com/package/jsonwebtoken" alt="jsonwebtoken">Jsonwebtoken (JWT)</a>
+- <a target="_blank" href="https://www.npmjs.com/package/multer" alt="multer">Multer</a>
+- <a target="_blank" href="https://www.npmjs.com/package/nodemailer" alt="nodemailer">Nodemailer</a>
+- <a target="_blank" href="https://www.npmjs.com/package/nodemailer-express-handlebars" alt="nodemailer-express-handlebars">Nodemailer Express Handlebars</a>
+- <a target="_blank" href="https://www.npmjs.com/package/pg" alt="pg">PG</a>
+- <a target="_blank" href="https://www.npmjs.com/package/pg-hstore" alt="pg-hstore">PG Hstore</a>
+- <a target="_blank" href="https://www.npmjs.com/package/youch" alt="youch">Youch</a>
+- <a target="_blank" href="https://www.npmjs.com/package/Yup" alt="Yup">Yup</a>
 
-### **Como usar este projeto**
-
-```
-docker run --name fastfeet -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
-
-yarn
-yarn sequelize db:migrate
-yarn sequelize db:seeds:all
-yarn dev
-```
-
-Após o servidor estar rodando você pode usar o Insomnia para testar as rotas da aplicação
-
-[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=FASTFEET&uri=https%3A%2F%2Fraw.githubusercontent.com%2FARTHURPC03%2FFastFeet%2Fmaster%2FInsomnia_2020-02-26.json)
-### **Um pouco sobre as ferramentas**
-
-- Sucrase + Nodemon;
-- ESLint + Prettier + EditorConfig;
-- Sequelize (Utilize PostgreSQL ou MySQL);
-
-#### **Comandos e dependências utilizadas**
-
-```
- yarn init -y
- yarn add express
- yarn add sucrase nodemon -D
- docker run --name fastfeet -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
- yarn add eslint -D
- yarn eslint --init
- yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
- yarn eslint --fix src --ext .js
- yarn add sequelize
- yarn add sequelize-cli -D
- yarn add pg pg-hstore
- yarn sequelize db:migrate
- yarn sequelize db:migrate undo
- yarn sequelize db:seed:all
- yarn add bcryptjs
- yarn add jsonwebtoken
- yarn add yup
-```
-
-
-### **Funcionalidades**
-
-Abaixo estão descritas as funcionalidades que você deve adicionar em sua aplicação.
-
-### 1. Autenticação
-
-Permita que um usuário se autentique em sua aplicação utilizando e-mail e uma senha.
-
-Crie um usuário administrador utilizando a funcionalidade de seeds do sequelize, essa funcionalidade serve para criarmos registros na base de dados de forma automatizada.
-
-- A autenticação deve ser feita utilizando JWT.
-- Realize a validação dos dados de entrada;
-
-### 2. Gestão de destinatários
-
-Você agora precisa permitir que destinatários sejam mantidos (cadastrados/atualizados) na aplicação, e esses devem ter o **nome** do destinatário e campos de endereço: **rua**, **número**, **complemento**, **estado**, **cidade** e **CEP**.
-
-Utilize uma nova tabela no banco de dados chamada `recipient` para guardar informações do destinatário.
-
-O cadastro de destinatários só pode ser feito por administradores autenticados na aplicação.
-
-O destinatário não pode se autenticar no sistema, ou seja, não possui senha.
-
-## :memo: Licença
-
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.

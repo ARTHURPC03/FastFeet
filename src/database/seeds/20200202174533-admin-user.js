@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 
 module.exports = {
   up: QueryInterface => {
@@ -14,8 +14,8 @@ module.exports = {
         },
       ],
       {}
-    )
+    );
   },
 
   down: () => {},
-}
+};
